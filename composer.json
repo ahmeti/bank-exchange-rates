@@ -1,0 +1,34 @@
+{
+    "name": "ahmeti/bank-exchange-rates",
+    "description": "Banka Döviz Kurları - Api",
+    "keywords": [
+        "bank",
+        "exchange",
+        "rates",
+        "api"
+    ],
+    "homepage": "https://github.com/ahmeti/bank-exchange-rates",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmet Imamoglu",
+            "email": "ahmet363@gmail.com",
+            "homepage": "https://ahmetimamoglu.com.tr",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": ">=6.0.0",
+        "ramsey/uuid": ">=4.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ahmeti\\BankExchangeRates\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {}
+}
