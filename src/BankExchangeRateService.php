@@ -13,13 +13,14 @@ class BankExchangeRateService
                 $this->rates[$item['curr_code']] = [];
             }
 
-            $this->rates[$item['curr_code']] = [$key => $item];
+            $this->rates[$item['curr_code']][$key] = $item;
         }
     }
 
     public function get(): array
     {
         $this->merge(Garanti::KEY, (new Garanti)->get());
+        $this->merge(YapiKredi::KEY, (new YapiKredi)->get());
 
         return $this->rates;
     }

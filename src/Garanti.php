@@ -39,7 +39,6 @@ class Garanti
                 'curr_code' => str_replace(['/TL', 'TL/'], ['/TRY', 'TRY/'], $item['currCode']),
                 'buy' => $item['exchBuyRate'],
                 'sell' => $item['exchSellRate'],
-                'change_ratio' => $item['changeRatio'],
                 'time' => $item['currDate'] . ' ' . $item['currTime'],
                 'description' => $item['currDesc'] . ' (' . $item['currFlagCode'] . ')',
             ];
