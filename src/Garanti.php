@@ -36,7 +36,7 @@ class Garanti
 
         foreach (json_decode($res->getBody()->getContents(), true) as $item) {
             $this->items[] = [
-                'curr_code' => str_replace(['/TL', 'TL/'], ['/TRY', 'TRY/'], $item['currCode']),
+                'symbol' => str_replace(['/TL', 'TL/'], ['/TRY', 'TRY/'], $item['currCode']),
                 'buy' => $item['exchBuyRate'],
                 'sell' => $item['exchSellRate'],
                 'time' => $item['currDate'] . ' ' . $item['currTime'],

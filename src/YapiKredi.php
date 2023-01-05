@@ -44,7 +44,7 @@ class YapiKredi
         $tbody->each(function ($tr, $i) use ($lastUpdate) {
             $firstTd = $tr->filterXPath('//td');
             $this->items[] = [
-                'curr_code' => $firstTd->first()->text() . '/TRY',
+                'symbol' => $firstTd->first()->text() . '/TRY',
                 'buy' => $this->textToFloat($firstTd->attr('data-previousdaybuyingprice')),
                 'sell' => $this->textToFloat($firstTd->attr('data-previousdaysellingprice')),
                 'time' => $lastUpdate,

@@ -28,14 +28,14 @@ try {
 [
   "USD/TRY" => [
     "garanti" => [
-      "curr_code" => "USD/TRY"
+      "symbol" => "USD/TRY"
       "buy" => 18.463
       "sell" => 19.063
       "time" => "2023-01-06 00:00:37"
       "description" => "Amerikan Doları (us/tr)"
     ]
     "yapikredi" => [
-      "curr_code" => "USD/TRY"
+      "symbol" => "USD/TRY"
       "buy" => 18.70675
       "sell" => 18.94574
       "time" => "2023-01-06 00:16:08"
@@ -44,15 +44,15 @@ try {
   ]
   
   "EUR/TRY" => [
-    "garanti" => [
-      "curr_code" => "EUR/TRY"
+    "symbol" => [
+      "symbol" => "EUR/TRY"
       "buy" => 19.427
       "sell" => 20.059
       "time" => "2023-01-06 00:00:37"
       "description" => "Avrupa Para Birimi (eu/tr)"
     ]
     "yapikredi" => [
-      "curr_code" => "EUR/TRY"
+      "symbol" => "EUR/TRY"
       "buy" => 19.70949
       "sell" => 19.96007
       "time" => "2023-01-06 00:16:08"

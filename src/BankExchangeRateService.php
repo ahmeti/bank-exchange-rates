@@ -9,11 +9,11 @@ class BankExchangeRateService
     protected function merge(string $key, array $items)
     {
         foreach ($items as $item) {
-            if (!array_key_exists($item['curr_code'], $this->rates)) {
-                $this->rates[$item['curr_code']] = [];
+            if (!array_key_exists($item['symbol'], $this->rates)) {
+                $this->rates[$item['symbol']] = [];
             }
 
-            $this->rates[$item['curr_code']][$key] = $item;
+            $this->rates[$item['symbol']][$key] = $item;
         }
     }
 
