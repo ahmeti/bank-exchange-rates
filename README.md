@@ -21,6 +21,7 @@ try {
 ## Banka Listesi
 - Garanti Bankası
 - Yapı Kredi Bankası
+- Halk Bankası
 
 ## Örnek Veriler
 
