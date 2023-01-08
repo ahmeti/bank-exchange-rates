@@ -13,6 +13,14 @@ class Garanti
 
     protected $items = [];
 
+    protected function replace(string $symbol): string
+    {
+        return str_replace(
+            ['/TL',  'TL/',  '/ALT', 'ALT/'],
+            ['/TRY', 'TRY/', '/XAU', 'XAU/'],
+            $symbol);
+    }
+
     public function get(): array
     {
         $client = new Client();
@@ -36,7 +44,8 @@ class Garanti
 
         foreach (json_decode($res->getBody()->getContents(), true) as $item) {
             $this->items[] = [
-                'symbol' => str_replace(['/TL', 'TL/'], ['/TRY', 'TRY/'], $item['currCode']),
+                'name' => 'Garanti',
+                'symbol' => $this->replace($item['currCode']),
                 'buy' => $item['exchBuyRate'],
                 'sell' => $item['exchSellRate'],
                 'time' => $item['currDate'] . ' ' . $item['currTime'],
