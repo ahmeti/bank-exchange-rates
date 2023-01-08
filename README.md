@@ -28,6 +28,7 @@ try {
 [
   "USD/TRY" => [
     "garanti" => [
+      "name" => "Garanti",
       "symbol" => "USD/TRY"
       "buy" => 18.463
       "sell" => 19.063
@@ -35,6 +36,7 @@ try {
       "description" => "Amerikan Doları (us/tr)"
     ]
     "yapikredi" => [
+      "name" => "Yapı Kredi",
       "symbol" => "USD/TRY"
       "buy" => 18.70675
       "sell" => 18.94574
@@ -44,7 +46,8 @@ try {
   ]
   
   "EUR/TRY" => [
-    "symbol" => [
+    "garanti" => [
+      "name" => "Garanti",
       "symbol" => "EUR/TRY"
       "buy" => 19.427
       "sell" => 20.059
@@ -52,6 +55,7 @@ try {
       "description" => "Avrupa Para Birimi (eu/tr)"
     ]
     "yapikredi" => [
+      "name" => "Yapı Kredi",
       "symbol" => "EUR/TRY"
       "buy" => 19.70949
       "sell" => 19.96007
