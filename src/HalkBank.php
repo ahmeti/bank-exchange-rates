@@ -3,7 +3,6 @@
 namespace Ahmeti\BankExchangeRates;
 
 use GuzzleHttp\Client;
-use Ramsey\Uuid\Uuid;
 
 class HalkBank
 {

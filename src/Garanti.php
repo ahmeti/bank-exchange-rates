@@ -8,7 +8,7 @@ use Ramsey\Uuid\Uuid;
 class Garanti
 {
     const KEY = 'garanti';
-    const BASE_URL = 'https://www.garantibbva.com.tr/';
+    const BASE_URL = 'https://www.garantibbva.com.tr';
     const DATA_URL = 'https://customers.garantibbva.com.tr/internet/digitalpublic/currency-convertor-public/v1/currency-convertor/currency-list-detail';
 
     protected $items = [];
