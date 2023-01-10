@@ -23,6 +23,7 @@ class BankExchangeRateService
         $this->merge(YapiKredi::KEY, (new YapiKredi)->get());
         $this->merge(HalkBank::KEY, (new HalkBank)->get());
         $this->merge(EnPara::KEY, (new EnPara)->get());
+        $this->merge(AkBank::KEY, (new AkBank)->get());
 
         return $this->rates;
     }
