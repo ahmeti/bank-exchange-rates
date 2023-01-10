@@ -22,6 +22,7 @@ try {
 - Garanti Bankası
 - Yapı Kredi Bankası
 - Halk Bankası
+- En Para
 
 ## Örnek Veriler
 
