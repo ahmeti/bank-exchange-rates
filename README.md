@@ -26,6 +26,7 @@ try {
 - Akbank
 - İş Bankası
 - Kuveyt Türk
+- Ziraat
 
 ## Örnek Veriler
 

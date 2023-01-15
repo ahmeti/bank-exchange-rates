@@ -43,6 +43,7 @@ class Service
         $this->merge((new AkBank)->get());
         $this->merge((new IsBankasi)->get());
         $this->merge((new KuveytTurk)->get());
+        $this->merge((new Ziraat)->get());
 
         return $this->rates;
     }
