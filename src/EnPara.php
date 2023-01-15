@@ -8,23 +8,17 @@ use Symfony\Component\DomCrawler\Crawler;
 class EnPara
 {
     const KEY = 'enpara';
+    const NAME = 'En Para';
     const BASE_URL = 'https://www.qnbfinansbank.enpara.com';
     const DATA_URL = 'https://www.qnbfinansbank.enpara.com/hesaplar/doviz-ve-altin-kurlari';
+    const REPLACES = [
+        'USD ($)' => 'USD/TRY',
+        'EUR (€)' => 'EUR/TRY',
+        'Altın (gram)' => 'XAU/TRY',
+        'EUR/USD Parite' => 'EUR/USD',
+    ];
 
     protected $items = [];
-
-    protected function textToFloat($text)
-    {
-        return (float)str_replace(['.', ','], ['', '.'], $text);
-    }
-
-    protected function replace(string $symbol): string
-    {
-        return str_replace(
-            ['USD ($)', 'EUR (€)', 'Altın (gram)', 'EUR/USD Parite'],
-            ['USD/TRY', 'EUR/TRY', 'XAU/TRY',      'EUR/USD'],
-            $symbol);
-    }
 
     public function get(): array
     {
@@ -59,10 +53,11 @@ class EnPara
                 $buy = $row->filter('span')->eq(1)->text();
                 $sell = $row->filter('span')->eq(2)->text();
                 $this->items[] = [
-                    'name' => 'En Para',
-                    'symbol' => $this->replace($currCode),
-                    'buy' => $this->textToFloat($buy),
-                    'sell' => $this->textToFloat($sell),
+                    'key' => self::KEY,
+                    'name' => self::NAME,
+                    'symbol' => Service::replace(self::REPLACES, $currCode),
+                    'buy' => Service::toFloat($buy),
+                    'sell' => Service::toFloat($sell),
                     'time' => date('Y-m-d H:i:s'),
                     'description' => null,
                 ];

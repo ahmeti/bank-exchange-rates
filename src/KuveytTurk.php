@@ -9,22 +9,21 @@ use GuzzleHttp\Client;
 class KuveytTurk
 {
     const KEY = 'kuveytturk';
+    const NAME = 'Kuveyt Türk';
     const BASE_URL = 'https://www.kuveytturk.com.tr';
     const TOKEN_URL = 'https://www.kuveytturk.com.tr/finans-portali/';
+    const REPLACES = [
+        'ALT (gr)' => 'XAU/TRY',
+    ];
 
     protected $items = [];
-
-    protected function toFloat($text): float
-    {
-        return (float)str_replace(['.', ','], ['', '.'], $text);
-    }
 
     protected function replace(string $symbol): string
     {
         if (strlen($symbol) === 3) {
             return $symbol . '/TRY';
         }
-        return str_replace(['ALT (gr)'], ['XAU/TRY'], $symbol);
+        return Service::replace(self::REPLACES, $symbol);
     }
 
     protected function getToken(): string
@@ -86,10 +85,11 @@ class KuveytTurk
         foreach ($items as $item) {
             if (!in_array($item['CurrencyCode'], ['TL', 'CAG (gr)', 'GMS (gr)', 'PLT (gr)', 'PLD (gr)', 'ZCeyrek'])) {
                 $this->items[] = [
-                    'name' => 'Kuveyt Türk',
+                    'key' => self::KEY,
+                    'name' => self::NAME,
                     'symbol' => $this->replace($item['CurrencyCode']),
-                    'buy' => $this->toFloat($item['BuyRate']),
-                    'sell' => $this->toFloat($item['SellRate']),
+                    'buy' => Service::toFloat($item['BuyRate']),
+                    'sell' => Service::toFloat($item['SellRate']),
                     'time' => $time,
                     'description' => $item['CurrencyDescription'],
                 ];

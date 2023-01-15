@@ -14,11 +14,6 @@ class YapiKredi
 
     protected $items = [];
 
-    protected function textToFloat($text)
-    {
-        return (float)str_replace(',', '.', $text);
-    }
-
     public function get(): array
     {
         $client = new Client();
@@ -46,8 +41,8 @@ class YapiKredi
             $this->items[] = [
                 'name' => 'Yapı Kredi',
                 'symbol' => $firstTd->first()->text() . '/TRY',
-                'buy' => $this->textToFloat($firstTd->attr('data-previousdaybuyingprice')),
-                'sell' => $this->textToFloat($firstTd->attr('data-previousdaysellingprice')),
+                'buy' => Service::toFloat($firstTd->attr('data-previousdaybuyingprice')),
+                'sell' => Service::toFloat($firstTd->attr('data-previousdaysellingprice')),
                 'time' => $lastUpdate,
                 'description' => null,
             ];

@@ -17,9 +17,14 @@ class Service
         }
     }
 
-    public function toFloat($text): float
+    public static function toFloat(string $text): float
     {
         return (float)str_replace(['.', ','], ['', '.'], $text);
+    }
+
+    public static function replace(array $replaces, $symbol): string
+    {
+        return str_replace(array_keys($replaces), array_values($replaces), $symbol);
     }
 
     public function get(): array

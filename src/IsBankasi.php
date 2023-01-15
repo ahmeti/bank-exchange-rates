@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 class IsBankasi
 {
     const KEY = 'isbankasi';
+    const NAME = 'İş Bankası';
     const BASE_URL = 'https://www.isbank.com.tr';
     const DATA_URL = 'https://www.isbank.com.tr/_vti_bin/DV.Isbank/PriceAndRate/PriceAndRateService.svc/GetFxRates';
 
@@ -50,7 +51,8 @@ class IsBankasi
 
         foreach ($items['Data'] as $item) {
             $this->items[] = [
-                'name' => 'İş Bankası',
+                'key' => self::KEY,
+                'name' => self::NAME,
                 'symbol' => $item['code'] . '/TRY',
                 'buy' => $item['fxRateBuy'],
                 'sell' => $item['fxRateSell'],

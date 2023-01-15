@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 class AkBank
 {
     const KEY = 'akbank';
+    const NAME = 'Akbank';
     const BASE_URL = 'https://www.akbank.com';
     const DATA_URL = 'https://www.akbank.com/_vti_bin/AkbankServicesSecure/FrontEndServiceSecure.svc/GetCurrencyRates';
 
@@ -56,7 +57,8 @@ class AkBank
         foreach ($data['GetCurrencyRatesResult']['cur'] as $item) {
             if ($item['KurTuru'] == '08') {
                 $this->items[] = [
-                    'name' => 'Ak Bank',
+                    'key' => self::KEY,
+                    'name' => self::NAME,
                     'symbol' => $item['Title'] . '/TRY',
                     'buy' => $item['DovizAlis'],
                     'sell' => $item['DovizSatis'],

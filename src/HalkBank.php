@@ -7,18 +7,16 @@ use GuzzleHttp\Client;
 class HalkBank
 {
     const KEY = 'halkbank';
+    const NAME = 'Halkbank';
     const BASE_URL = 'https://www.halkbank.com.tr';
     const DATA_URL = 'https://webapi.halkbank.com.tr/api/MarketInformation/';
+    const REPLACES = [
+        'USD' => 'USD/TRY',
+        'EUR' => 'EUR/TRY',
+        'Altın (995/1000)' => 'XAU/TRY',
+    ];
 
     protected $items = [];
-
-    protected function replace(string $symbol): string
-    {
-        return str_replace(
-            ['USD',     'EUR',     'Altın (995/1000)'],
-            ['USD/TRY', 'EUR/TRY', 'XAU/TRY'],
-            $symbol);
-    }
 
     public function get(): array
     {
@@ -50,8 +48,9 @@ class HalkBank
         foreach ($json['data']['exchangeItems'] as $item) {
             if (in_array($item['name'], ['USD', 'EUR', 'Altın (995/1000)'])) {
                 $this->items[] = [
-                    'name' => 'Halk Bank',
-                    'symbol' => $this->replace($item['name']),
+                    'key' => self::KEY,
+                    'name' => self::NAME,
+                    'symbol' => Service::replace(self::REPLACES, $item['name']),
                     'buy' => $item['buying'],
                     'sell' => $item['selling'],
                     'time' => $time,

@@ -8,18 +8,17 @@ use Ramsey\Uuid\Uuid;
 class Garanti
 {
     const KEY = 'garanti';
+    const NAME = 'Garanti';
     const BASE_URL = 'https://www.garantibbva.com.tr';
     const DATA_URL = 'https://customers.garantibbva.com.tr/internet/digitalpublic/currency-convertor-public/v1/currency-convertor/currency-list-detail';
+    const REPLACES = [
+        '/TL' => '/TRY',
+        'TL/' => 'TRY/',
+        '/ALT' => '/XAU',
+        'ALT/' => 'XAU/',
+    ];
 
     protected $items = [];
-
-    protected function replace(string $symbol): string
-    {
-        return str_replace(
-            ['/TL',  'TL/',  '/ALT', 'ALT/'],
-            ['/TRY', 'TRY/', '/XAU', 'XAU/'],
-            $symbol);
-    }
 
     public function get(): array
     {
@@ -44,8 +43,9 @@ class Garanti
 
         foreach (json_decode($res->getBody()->getContents(), true) as $item) {
             $this->items[] = [
-                'name' => 'Garanti',
-                'symbol' => $this->replace($item['currCode']),
+                'key' => self::KEY,
+                'name' => self::NAME,
+                'symbol' => Service::replace(self::REPLACES, $item['currCode']),
                 'buy' => $item['exchBuyRate'],
                 'sell' => $item['exchSellRate'],
                 'time' => $item['currDate'] . ' ' . $item['currTime'],
