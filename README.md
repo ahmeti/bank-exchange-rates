@@ -25,6 +25,7 @@ try {
 - Enpara
 - Akbank
 - İş Bankası
+- Kuveyt Türk
 
 ## Örnek Veriler
 
