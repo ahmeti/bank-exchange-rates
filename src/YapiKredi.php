@@ -9,6 +9,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class YapiKredi
 {
     const KEY = 'yapikredi';
+    const NAME = 'Yapı Kredi';
     const BASE_URL = 'https://www.yapikredi.com.tr';
     const DATA_URL = 'https://www.yapikredi.com.tr/yatirimci-kosesi/doviz-bilgileri';
 
@@ -39,7 +40,8 @@ class YapiKredi
         $tbody->each(function ($tr, $i) use ($lastUpdate) {
             $firstTd = $tr->filterXPath('//td');
             $this->items[] = [
-                'name' => 'Yapı Kredi',
+                'key' => self::KEY,
+                'name' => self::NAME,
                 'symbol' => $firstTd->first()->text() . '/TRY',
                 'buy' => Service::toFloat($firstTd->attr('data-previousdaybuyingprice')),
                 'sell' => Service::toFloat($firstTd->attr('data-previousdaysellingprice')),
