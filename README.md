@@ -27,6 +27,7 @@ try {
 - İş Bankası
 - Kuveyt Türk
 - Ziraat
+- Cepte TEB
 
 ## Örnek Veriler
 
