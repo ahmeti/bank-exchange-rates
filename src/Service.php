@@ -2,6 +2,8 @@
 
 namespace Ahmeti\BankExchangeRates;
 
+use DateTimeZone;
+
 class Service
 {
     protected $rates = [];
@@ -15,6 +17,11 @@ class Service
 
             $this->rates[$item['symbol']][] = $item;
         }
+    }
+
+    public static function timeZone(): DateTimeZone
+    {
+        return new DateTimeZone('Europe/Istanbul');
     }
 
     public static function toFloat(string $text): float
