@@ -24,6 +24,7 @@ try {
 - Halk Bankası
 - Enpara
 - Akbank
+- İş Bankası
 
 ## Örnek Veriler
 
