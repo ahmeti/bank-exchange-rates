@@ -12,16 +12,17 @@
     "authors": [
         {
             "name": "Ahmet Imamoglu",
-            "email": "ahmet363@gmail.com",
-            "homepage": "https://ahmetimamoglu.com.tr",
+            "email": "ahmet@ahmeti.com.tr",
+            "homepage": "https://ahmeti.com.tr",
             "role": "Developer"
         }
     ],
     "require": {
         "php": ">=8.1",
-        "symfony/dom-crawler": ">=v6.2.0",
         "guzzlehttp/guzzle": ">=6.0.0",
-        "ramsey/uuid": ">=4.0.0"
+        "ramsey/uuid": ">=4.0.0",
+        "symfony/css-selector": "^6.4|^7.0",
+        "symfony/dom-crawler": ">=v6.2.0"
     },
     "autoload": {
         "psr-4": {

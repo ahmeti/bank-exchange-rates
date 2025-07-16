@@ -9,12 +9,12 @@ composer require ahmeti/bank-exchange-rates
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
-try {
-    $rates = (new \Ahmeti\BankExchangeRates\Service)->get();
-    print_r($rates);
-    
-}catch (\Exception $exception){
-    print_r($exception);
+$service = new \Ahmeti\BankExchangeRates\Service();
+
+print_r($service->get());
+
+if ($service->hasError()) {
+    print_r($service->getErrors());
 }
 ```
 
