@@ -8,9 +8,13 @@ use Symfony\Component\DomCrawler\Crawler;
 class EnPara
 {
     const KEY = 'enpara';
+
     const NAME = 'En Para';
+
     const BASE_URL = 'https://www.qnbfinansbank.enpara.com';
+
     const DATA_URL = 'https://www.qnbfinansbank.enpara.com/hesaplar/doviz-ve-altin-kurlari';
+
     const REPLACES = [
         'USD ($)' => 'USD/TRY',
         'EUR (€)' => 'EUR/TRY',
@@ -22,7 +26,7 @@ class EnPara
 
     public function get(): array
     {
-        $client = new Client();
+        $client = new Client;
         $headers = [
             'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
             'Accept-Language' => 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
@@ -37,11 +41,11 @@ class EnPara
             'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
             'sec-ch-ua' => '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
             'sec-ch-ua-mobile' => '?0',
-            'sec-ch-ua-platform' => '"macOS"'
+            'sec-ch-ua-platform' => '"macOS"',
         ];
 
         $res = $client->get(self::DATA_URL, [
-            'headers' => $headers
+            'headers' => $headers,
         ]);
 
         $crawler = new Crawler($res->getBody()->getContents());

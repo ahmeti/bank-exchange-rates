@@ -8,9 +8,13 @@ use Ramsey\Uuid\Uuid;
 class Garanti
 {
     const KEY = 'garanti';
+
     const NAME = 'Garanti';
+
     const BASE_URL = 'https://www.garantibbva.com.tr';
+
     const DATA_URL = 'https://customers.garantibbva.com.tr/digital-public/currency-convertor-public/v2/currency-convertor/currency-list-detail';
+
     const REPLACES = [
         '/TL' => '/TRY',
         'TL/' => 'TRY/',
@@ -22,7 +26,7 @@ class Garanti
 
     public function get(): array
     {
-        $client = new Client();
+        $client = new Client;
         $headers = [
             'Accept' => 'application/json',
             'Accept-Language' => 'en,tr;q=0.9,en-US;q=0.8,ru;q=0.7',
@@ -53,7 +57,7 @@ class Garanti
         ];
 
         $res = $client->get(self::DATA_URL, [
-            'headers' => $headers
+            'headers' => $headers,
         ]);
 
         foreach (json_decode($res->getBody()->getContents(), true) as $item) {
@@ -63,8 +67,8 @@ class Garanti
                 'symbol' => Service::replace(self::REPLACES, $item['currCode']),
                 'buy' => $item['exchBuyRate'],
                 'sell' => $item['exchSellRate'],
-                'time' => $item['currDate'] . ' ' . $item['currTime'],
-                'description' => $item['currDesc'] . ' (' . $item['currFlagCode'] . ')',
+                'time' => $item['currDate'].' '.$item['currTime'],
+                'description' => $item['currDesc'].' ('.$item['currFlagCode'].')',
             ];
         }
 

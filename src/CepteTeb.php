@@ -8,15 +8,18 @@ use GuzzleHttp\Client;
 class CepteTeb
 {
     const KEY = 'cepteteb';
+
     const NAME = 'Cepte TEB';
+
     const BASE_URL = 'https://www.cepteteb.com.tr';
+
     const DATA_URL = 'https://www.cepteteb.com.tr/services/GetGunlukDovizKur';
 
     protected $items = [];
 
     public function get(): array
     {
-        $client = new Client();
+        $client = new Client;
         $headers = [
             'Accept' => 'application/json, text/javascript, */*; q=0.01',
             'Accept-Language' => 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
@@ -37,7 +40,7 @@ class CepteTeb
         ];
 
         $res = $client->get(self::DATA_URL, [
-            'headers' => $headers
+            'headers' => $headers,
         ]);
 
         $items = json_decode($res->getBody()->getContents(), true);

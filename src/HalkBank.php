@@ -7,9 +7,13 @@ use GuzzleHttp\Client;
 class HalkBank
 {
     const KEY = 'halkbank';
+
     const NAME = 'Halkbank';
+
     const BASE_URL = 'https://www.halkbank.com.tr';
+
     const DATA_URL = 'https://webapi.halkbank.com.tr/api/MarketInformation/';
+
     const REPLACES = [
         'USD' => 'USD/TRY',
         'EUR' => 'EUR/TRY',
@@ -20,7 +24,7 @@ class HalkBank
 
     public function get(): array
     {
-        $client = new Client();
+        $client = new Client;
         $headers = [
             'Accept' => '*/*',
             'Accept-Language' => 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
@@ -39,7 +43,7 @@ class HalkBank
         ];
 
         $res = $client->get(self::DATA_URL, [
-            'headers' => $headers
+            'headers' => $headers,
         ]);
 
         $json = json_decode($res->getBody()->getContents(), true);

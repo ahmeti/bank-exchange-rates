@@ -9,9 +9,13 @@ use Symfony\Component\DomCrawler\Crawler;
 class Ziraat
 {
     const KEY = 'ziraat';
+
     const NAME = 'Ziraat';
+
     const BASE_URL = 'https://www.ziraatbank.com.tr';
+
     const DATA_URL = 'https://www.ziraatbank.com.tr/tr/_layouts/15/Ziraat/HomePage/Ajax.aspx/GetZiraatVerileri';
+
     const REPLACES = [
         'AMERIKAN DOLARI' => 'USD/TRY',
         'EURO' => 'EUR/TRY',
@@ -22,7 +26,7 @@ class Ziraat
 
     public function get(): array
     {
-        $client = new Client();
+        $client = new Client;
         $headers = [
             'Accept' => 'text/plain, */*; q=0.01',
             'Accept-Language' => 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
@@ -38,11 +42,11 @@ class Ziraat
             'X-Requested-With' => 'JQuery PageEvents',
             'sec-ch-ua' => '"Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"',
             'sec-ch-ua-mobile' => '?0',
-            'sec-ch-ua-platform' => '"macOS"'
+            'sec-ch-ua-platform' => '"macOS"',
         ];
 
         $res = $client->get(self::DATA_URL, [
-            'headers' => $headers
+            'headers' => $headers,
         ]);
 
         $data = json_decode($res->getBody()->getContents(), true);
